@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <h1>makalu...</h1>
+       <h1>makalu... deploy</h1>
       </div>
     );
   }
