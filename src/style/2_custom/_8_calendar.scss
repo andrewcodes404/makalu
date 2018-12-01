@@ -88,7 +88,7 @@
     h2 {
         color: $primary; // color: $secondary;
         font-weight: bold;
-        @include fontSize(24px);
+        @include fontSize(20px);
         font-weight: 400;
 
         @include media-sml {
@@ -104,7 +104,7 @@
         color: white;
         margin-bottom: 0;
         line-height: 1;
-        @include fontSize(18px);
+        @include fontSize(16px);
         font-weight: 400;
 
         @include media-sml {
@@ -120,13 +120,14 @@
 .form-reminder {
     // margin: 2rem 0;  
     // @include b1();  
-    padding: .5rem;
+    
     margin: 1rem auto 0;
     max-width: 600px;
     display: flex;
     flex-direction: column;
 
     @include media-sml {
+        padding: .5rem;
         flex-direction: row;
         justify-content: space-evenly;
     }
@@ -135,6 +136,14 @@
 }
 
 .form-reminder-item {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+
+    @include media-sml{
+    margin-bottom: 1rem;
+    };
+
     ::-webkit-input-placeholder {
         /* Chrome */
         color: $myGreyDark;
@@ -144,12 +153,13 @@
         padding: 0; // padding-bottom: 1rem;
     }
 
-    ;
+    
 }
 
 .timer-message {
     margin-bottom: 3rem;
     line-height: 1.2;
+    color: white;
     @include fontSize(18px);
     font-weight: 400;
 
@@ -195,7 +205,7 @@
     justify-content: center;
     width: 100%;
 
-    @include b1();
+    // @include b1();
     
 
 
