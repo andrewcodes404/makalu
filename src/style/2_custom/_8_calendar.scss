@@ -18,19 +18,24 @@
     color: white;
     text-align: center;
     padding: 0 1rem;
+
     h1 {
         color: white;
         @include fontSize(20px);
+
         @include media-sml {
             @include fontSize(30px);
         }
     }
+
     p {
         @include fontSize(18px);
         font-weight: 400;
+
         @include media-sml {
             @include fontSize(24px);
         }
+
         @include media-med {
             @include fontSize(40px);
         }
@@ -39,14 +44,17 @@
 
 .timer {
     @include fontSize(32px);
+
     @include media-sml {
         @include fontSize(60px);
         font-weight: 400;
         line-height: 1;
     }
+
     @include media-med {
         @include fontSize(80px);
     }
+
     ;
     color: white;
 }
@@ -54,9 +62,11 @@
 .secs {
     display: inline-block;
     width: 40px;
+
     @include media-sml {
         width: 4.7rem;
     }
+
     @include media-med {
         width: 6.3rem;
     }
@@ -67,32 +77,40 @@
     background-color: rgba(black, .5);
     padding: .5rem;
     border-radius: 10px;
+
     @include media-med {
         padding: 1rem 2rem;
         margin: 1rem 0;
     }
+
     ;
+
     h2 {
         color: $primary; // color: $secondary;
         font-weight: bold;
         @include fontSize(24px);
         font-weight: 400;
+
         @include media-sml {
             @include fontSize(36px);
         }
+
         @include media-med {
             @include fontSize(50px);
         }
     }
+
     p {
         color: white;
         margin-bottom: 0;
         line-height: 1;
         @include fontSize(18px);
         font-weight: 400;
+
         @include media-sml {
             @include fontSize(24px);
         }
+
         @include media-med {
             @include fontSize(30px);
         }
@@ -107,10 +125,12 @@
     max-width: 600px;
     display: flex;
     flex-direction: column;
+
     @include media-sml {
         flex-direction: row;
         justify-content: space-evenly;
     }
+
     ;
 }
 
@@ -119,9 +139,11 @@
         /* Chrome */
         color: $myGreyDark;
     }
+
     @include media-sml {
         padding: 0; // padding-bottom: 1rem;
     }
+
     ;
 }
 
@@ -130,9 +152,11 @@
     line-height: 1.2;
     @include fontSize(18px);
     font-weight: 400;
+
     @include media-sml {
         @include fontSize(24px);
     }
+
     @include media-med {
         @include fontSize(30px);
     }
@@ -155,26 +179,37 @@
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
+
     @include media-sml {
         justify-content: center;
     }
+
     ;
 }
 
 .message {
-    max-width: 90%;
-    margin-top: 8rem;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+
+    @include b1();
+    
+
+
     @include fontSize(30px);
     color: white;
     text-align: center;
     line-height: 1.2;
+
     @include media-sml {
         @include fontSize(45px);
         text-align: center;
-        max-width: 670px;
         margin-top: unset;
     }
-    ;
+
 }
 
 // The Calendar --- The Calendar ---The Calendar 
@@ -244,19 +279,23 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
 }
 
 @keyframes shake {
+
     10%,
     90% {
         transform: translate3d(-1px, 0, 0);
     }
+
     20%,
     80% {
         transform: translate3d(2px, 0, 0);
     }
+
     30%,
     50%,
     70% {
         transform: translate3d(-4px, 0, 0);
     }
+
     40%,
     60% {
         transform: translate3d(4px, 0, 0);
@@ -264,19 +303,23 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
 }
 
 @keyframes shake-up-down {
+
     10%,
     90% {
         transform: translate(0, -1px);
     }
+
     20%,
     80% {
         transform: translate(0, 2px);
     }
+
     30%,
     50%,
     70% {
         transform: translate(0, -4px);
     }
+
     40%,
     60% {
         transform: translate(0, 4px);
@@ -306,13 +349,16 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     16.5% {
         transform: rotate(-5deg)
     }
+
     33.2%,
     83% {
         transform: rotate(20deg)
     }
+
     59.3% {
         transform: rotate(-20deg)
     }
+
     66.4% {
         transform: rotate(5deg)
     }
@@ -320,9 +366,11 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
 
 .lightbox-open-btn {
     display: none;
+
     @include media-med {
         display: unset;
     }
+
     position: absolute;
     @include fontSize(16px);
     background-color: rgba(white, .65);
@@ -331,6 +379,7 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     transition: .4s;
     opacity: 0;
     cursor: pointer;
+
     &:hover {
         color: green;
     }
@@ -341,12 +390,14 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     width: 25vw;
     height: 16.6vh;
     position: relative;
+
     @include media-lrg {
         width: 16.6666%;
         height: 25%;
         position: relative;
         padding: 0px;
     }
+
     img {
         width: 100%;
         height: 100%;
@@ -354,6 +405,7 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
         display: none;
         cursor: zoom-in;
     }
+
     &:hover {
         .lightbox-open-btn {
             opacity: 1;
@@ -379,12 +431,14 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     p {
         line-height: 0;
         font-size: 1.5rem;
         color: white;
         cursor: pointer;
         transition: .5s;
+
         &:hover {
             color: green;
             animation: shake-up-down 1s;
@@ -426,6 +480,7 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     text-align: center;
     animation-duration: 1s;
     animation-name: fadeIn; // position: relative;
+
     img {
         //    @include b1();
         //    object-fit: contain;
@@ -438,9 +493,11 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
 
 .lightbox-close-btn {
     display: none;
+
     @include media-med {
         display: unset;
     }
+
     position: absolute;
     top: 15px;
     left: 15px;
@@ -453,6 +510,7 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     @include fontSize(20px);
     color: white;
     transition: .4s;
+
     &:hover {
         animation: turny-turn 1s cubic-bezier(.36, .07, .19, .97) both; // color: orange;
         font-weight: 500;
@@ -464,9 +522,12 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
 // EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- 
 .example-page-message-top {
     display: none;
-    @include media-sml{
+
+    @include media-sml {
         display: block
-    };
+    }
+
+    ;
     position: absolute;
     top: 0;
     left: 0;
@@ -475,6 +536,7 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     background-color: rgba(black, .7);
     padding: .75rem 0;
     text-align: center;
+
     p {
         color: white;
         line-height: 1;
@@ -496,17 +558,21 @@ lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
     padding: 1rem;
     background-color: rgba(black, .6);
     text-align: center;
+
     @include media-sml {
         margin-top: 8rem;
         margin-top: unset;
     }
+
     p {
         @include fontSize(20px);
         color: white; // text-align: center;
         line-height: 1.2;
+
         @include media-sml {
             @include fontSize(30px); // text-align: center;
         }
+
         ;
     }
 }

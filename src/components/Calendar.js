@@ -2,7 +2,7 @@ import React from 'react';
 import { db } from '../firebase';
 
 import { withRouter } from 'react-router-dom'
-
+import FollowerForm from "./FollowerForm";
 //comps
 // import Timer from "./Timer";
 
@@ -17,9 +17,9 @@ const day = "0" + now.getDate()
 
 let theDate = null
 if (process.env.NODE_ENV === 'production') {
-    theDate = ("" +year+ month+ day)
+    theDate = ("" + year + month + day)
 } else {
-    theDate = ("" +year+ month+ day)
+    theDate = ("" + year + month + day)
 }
 
 
@@ -161,7 +161,7 @@ class Calendar extends React.Component {
 
     removeMessage = () => {
         console.log('it clicked');
-        
+
         this.setState({
             showMessage: false
         })
@@ -174,7 +174,7 @@ class Calendar extends React.Component {
 
         if (this.state.isAuthenticating) return null;
 
- 
+
         return (
 
             <div>
@@ -183,12 +183,17 @@ class Calendar extends React.Component {
 
                     {/* {process.env.NODE_ENV === 'production' && <Timer name={this.state.username} />} */}
                     {/* {theDate < 20181201 && <Timer name={this.state.username} calId={this.state.calId}/>} */}
-                 
-                    {this.state.showMessage ? <div className="message-cont" onClick={this.removeMessage}>
-                        <div className="message">{this.state.message}</div>
+
+                    {this.state.showMessage ? <div className="message-cont" >
+                        {/* <div className=" border1" onClick={this.removeMessage}></div> */}
+                        <div className="message" onClick={this.removeMessage}>{this.state.message}</div>
+                        {/* <div className="flex-one"></div> */}
+
+                        <FollowerForm />
+
                     </div> : null}
 
-                    
+
 
                     <div className={`cal-container un-blur-me   ${this.state.showMessage && "blur-me"}`}>
 
