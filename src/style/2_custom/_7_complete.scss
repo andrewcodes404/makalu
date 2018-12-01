@@ -1,0 +1,115 @@
+.the-big-page {
+    display: flex;
+    flex-direction: column;
+
+    // https: //unsplash.com/photos/jd_YFWRkOqQ
+    background-image: url("https://res.cloudinary.com/dcqi9fn2y/image/upload/v1542633221/countdown_assets/snowy-trees.jpg");
+
+    background-size: cover;
+    // background-position: bottom;
+    margin: 0;
+    color: $myGreyDark;
+
+    h1,
+    h2 {
+        // @include b1();
+        text-align: center
+    }
+
+    p {
+        color: $myGreyDark;
+        font-weight: bold;
+    }
+
+    li {
+        color: $myGreyDark;
+        line-height: 1.4;
+        margin-bottom: .5rem;
+
+    }
+}
+
+.complete-cont {
+    margin: 1rem 0 3rem;
+    padding: 1rem 2rem;
+
+    @include media-sml {
+        margin: 1rem 0 3rem;
+        padding: 1rem 2rem;
+    }
+
+    ;
+
+    background-color: rgba(white, .9);
+    border-radius: 4px;
+}
+
+.link-cont {
+    margin: 1rem 0;
+}
+
+.the-cal-link {
+    text-decoration: underline;
+
+    @include media-sml {
+        margin: 2rem 0;
+        @include fontSize(24px);
+    }
+}
+
+
+// .simply-click {
+//     text-align: center;
+
+// }
+
+.share-btn-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 2rem auto 1rem;
+
+    max-width: 500px;
+
+}
+
+.share-btn-wrapper {
+    line-height: 1;
+    margin: 1rem 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    width: 40%;
+
+    @include media-sml {
+        width: 25%
+    }
+}
+
+
+
+.share-btn {
+
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:hover {
+        opacity: 0.75;
+    }
+
+}
+
+.text-alert {
+
+    background-color: yellow;
+}
+
+.text-desc {}

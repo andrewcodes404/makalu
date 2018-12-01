@@ -1,0 +1,141 @@
+// Nav -- Nav -- Nav -- Nav -- Nav -- Nav --
+// Nav -- Nav -- Nav -- Nav -- Nav -- Nav --
+// Nav -- Nav -- Nav -- Nav -- Nav -- Nav --
+
+.new-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.5% 0 0;
+
+    @include media-med {
+        padding: 0 2.5%;
+
+    }
+}
+
+
+.nav-logo-cont {
+    width: 40px;
+    margin-bottom: -1px;
+
+    @include media-sml {
+        width: 50px;
+    }
+}
+
+.nav-text,
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+
+    p {
+        line-height: 1;
+        margin-bottom: 0;
+    }
+}
+
+.nav-menu {
+    align-items: flex-end;
+}
+
+.menu-item {
+    cursor: pointer;
+    &:hover {
+        color: $primary;
+    }
+}
+
+
+.nav-text {
+    display: none;
+    @include media-sml {
+        display: flex;
+    }
+}
+
+// FOOTER --- FOOTER ---FOOTER ---FOOTER ---FOOTER ---
+// FOOTER --- FOOTER ---FOOTER ---FOOTER ---FOOTER ---
+// FOOTER --- FOOTER ---FOOTER ---FOOTER ---FOOTER ---
+
+
+footer {
+
+    background-color: $secondary;
+    padding: 1.5rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include media-sml {
+        padding: 2rem 0 1.5rem;
+    }
+
+    @include media-med {
+        padding: 2rem 0 1.5rem;
+    }
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: $content-width;
+    margin: auto;
+
+    a,
+    a:link,
+    a:visited,
+    a:active {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+            color: #C1272D;
+            ;
+        }
+    }
+
+    @include media-sml {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.footer-icons {
+    text-align: center;
+    line-height: 1.3;
+
+    @include media-sml{
+        line-height: 1;
+    };
+    span {
+        padding: 0 1rem;
+        @include fontSize(20px);
+
+    }
+}
+
+.footer-text {
+    margin-top: .5rem;
+    text-align: center;
+}
+
+// FOR THE HOME PAGE 👇
+.home-footer {
+    background-color: $secondary;
+
+    a,
+    a:link,
+    a:visited,
+    a:active {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+            color: #C1272D;
+            ;
+        }
+    }
+}

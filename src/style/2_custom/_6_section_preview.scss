@@ -1,0 +1,269 @@
+// CHECKLIST
+
+.checklist-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+
+}
+
+.check-message {
+    font-style: italic;
+
+    margin-left: 10px;
+    padding: 0 10px;
+
+    background-color: tomato;
+    color: white;
+
+    cursor: pointer;
+
+    &:hover {
+        color: black
+    }
+}
+
+
+
+// PREVIEW
+
+.preview-flex-cont {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.preview-item {
+
+    width: 25%;
+    height: 0;
+    padding: 0 0 25% 0;
+    position: relative;
+    cursor: pointer;
+
+    @include media-sml {
+        width: 16.666%;
+        padding: 0 0 16.666% 0;
+    }
+
+}
+
+
+.preview-item-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    img {
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+        opacity: 0;
+        transition: .4s;
+        animation: .7s linear img-fade-out;
+    }
+}
+
+.xmas-message {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.the-message {
+    text-align: center;
+    line-height: 1.4;
+    @include fontSize(28px);
+    letter-spacing: 1px;
+    max-width: 80%;
+    margin: auto;
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover {
+        color: turquoise;
+    }
+}
+
+
+.preview-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: lightblue;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+
+.show-preview-img {
+    img {
+        display: unset;
+        animation: .7s linear img-fade-in;
+        opacity: 1;
+    }
+}
+
+.preview-cal-number {
+    /* border: 1px solid red; */
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        line-height: 0;
+        //font-size done in react comp
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        transition: .5s;
+
+        &:hover {
+            color: orange;
+        }
+    }
+}
+
+
+
+.launch-btn {
+    // @include b1();
+    margin: 1rem auto;
+    
+line-height: 1;
+    
+    @include fontSize(14px);
+
+    @include media-sml {
+        @include fontSize(22px);
+    }
+
+    @include media-med {
+        @include fontSize(26px);
+        line-height: 1.2
+    }
+
+    &:hover {
+        // background-color: yellow;
+        background-color: lighten($secondary, 20%);
+        color: black;
+    }
+
+}
+
+
+.launch-cont {
+    text-align: center;
+    margin: 2rem 0 4rem;
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+}
+
+
+///GO ALERT 
+
+.goAlert {
+    //  overflow: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .9);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.goAlertText {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    h2 {
+        color: white;
+    }
+
+}
+
+
+
+.go-btn,
+.hang-on-btn {
+    @include fontSize(14px);
+
+    @include media-sml {
+        @include fontSize(22px);
+    }
+
+    @include media-med {
+        margin-top: 1rem;
+        @include fontSize(26px);
+        line-height: 1.2
+    }
+
+}
+
+
+.hang-on-btn {
+    background-color: $primary;
+    margin: 2rem;
+
+    &:hover {
+        color: black;
+        background-color: lighten($primary, 10%);
+
+    }
+}
+
+.go-btn {
+    background-color: $secondary;
+
+    &:hover {
+        // background-color: yellow;
+        background-color: lighten($secondary, 20%);
+        color: black;
+    }
+}
+
+
+// .lets-go-text {
+//     display: none;
+//     @include b1();
+// }

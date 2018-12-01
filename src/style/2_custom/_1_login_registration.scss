@@ -1,0 +1,70 @@
+// LOGIN ------- LOGIN -------LOGIN -------
+// LOGIN ------- LOGIN -------LOGIN -------
+// LOGIN ------- LOGIN -------LOGIN -------
+
+
+
+.login-form,
+.registration-form
+ {
+    //  @include b1();
+    background-color: #fff;
+    padding: 1rem;
+    max-width: 300px;
+    margin: 1rem auto 1rem;
+
+    @include media-sml {
+        
+        max-width: unset;
+        width: 250px;
+        margin: 0 2rem 0 0;
+    }
+    @include media-med{
+        padding: 1.25rem 2rem;
+        width: 330px;
+        margin: 2rem 2rem 4rem 0;
+    };
+
+   
+}
+
+.form-item{
+    margin: 0 0 1rem 0;
+}
+
+.form-flex-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registration-form {
+    // border-bottom: 1px dotted lightgray;
+     @include media-sml {
+         border-bottom: none;
+     }
+}
+
+.reg-form-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.terms {
+    // color: white;
+
+    a {
+        color: $primary;
+    }
+}
+
+// .login-form { 
+// }
+
+// FORGOT ----  FORGOT ----  FORGOT ----
+// FORGOT ----  FORGOT ----  FORGOT ----
+// FORGOT ----  FORGOT ----  FORGOT ----
+
+.forgot-form {
+    max-width: 300px;
+    margin: 3rem auto 1rem;
+}

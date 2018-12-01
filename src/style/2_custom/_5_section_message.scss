@@ -1,0 +1,28 @@
+
+
+
+.text-area-cont {
+
+   
+    
+}
+
+
+
+.text-area{
+
+    width: 80%;
+    margin: auto;
+    padding: 1rem;
+    background-color: white;
+}
+
+#xmasMessage {
+    @include fontSize(20px);
+
+    @include media-med {
+        @include fontSize(40px);
+    }  
+}
+
+

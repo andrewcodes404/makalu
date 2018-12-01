@@ -1,0 +1,512 @@
+.flex-one {
+    flex: 1
+}
+
+// THE TIMER
+.timer-bkg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(black, .4);
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+    h1 {
+        color: white;
+        @include fontSize(20px);
+        @include media-sml {
+            @include fontSize(30px);
+        }
+    }
+    p {
+        @include fontSize(18px);
+        font-weight: 400;
+        @include media-sml {
+            @include fontSize(24px);
+        }
+        @include media-med {
+            @include fontSize(40px);
+        }
+    }
+}
+
+.timer {
+    @include fontSize(32px);
+    @include media-sml {
+        @include fontSize(60px);
+        font-weight: 400;
+        line-height: 1;
+    }
+    @include media-med {
+        @include fontSize(80px);
+    }
+    ;
+    color: white;
+}
+
+.secs {
+    display: inline-block;
+    width: 40px;
+    @include media-sml {
+        width: 4.7rem;
+    }
+    @include media-med {
+        width: 6.3rem;
+    }
+}
+
+.reminder-box {
+    margin: 1rem 0;
+    background-color: rgba(black, .5);
+    padding: .5rem;
+    border-radius: 10px;
+    @include media-med {
+        padding: 1rem 2rem;
+        margin: 1rem 0;
+    }
+    ;
+    h2 {
+        color: $primary; // color: $secondary;
+        font-weight: bold;
+        @include fontSize(24px);
+        font-weight: 400;
+        @include media-sml {
+            @include fontSize(36px);
+        }
+        @include media-med {
+            @include fontSize(50px);
+        }
+    }
+    p {
+        color: white;
+        margin-bottom: 0;
+        line-height: 1;
+        @include fontSize(18px);
+        font-weight: 400;
+        @include media-sml {
+            @include fontSize(24px);
+        }
+        @include media-med {
+            @include fontSize(30px);
+        }
+    }
+}
+
+.form-reminder {
+    // margin: 2rem 0;  
+    // @include b1();  
+    padding: .5rem;
+    margin: 1rem auto 0;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    @include media-sml {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    ;
+}
+
+.form-reminder-item {
+    ::-webkit-input-placeholder {
+        /* Chrome */
+        color: $myGreyDark;
+    }
+    @include media-sml {
+        padding: 0; // padding-bottom: 1rem;
+    }
+    ;
+}
+
+.timer-message {
+    margin-bottom: 3rem;
+    line-height: 1.2;
+    @include fontSize(18px);
+    font-weight: 400;
+    @include media-sml {
+        @include fontSize(24px);
+    }
+    @include media-med {
+        @include fontSize(30px);
+    }
+}
+
+//xmas messaeg overlay-- //xmas messaeg overlay--//xmas messaeg overlay
+//xmas messaeg overlay-- //xmas messaeg overlay--//xmas messaeg overlay
+//xmas messaeg overlay-- //xmas messaeg overlay--//xmas messaeg overlay
+.message-cont {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(black, .5);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    @include media-sml {
+        justify-content: center;
+    }
+    ;
+}
+
+.message {
+    max-width: 90%;
+    margin-top: 8rem;
+    @include fontSize(30px);
+    color: white;
+    text-align: center;
+    line-height: 1.2;
+    @include media-sml {
+        @include fontSize(45px);
+        text-align: center;
+        max-width: 670px;
+        margin-top: unset;
+    }
+    ;
+}
+
+// The Calendar --- The Calendar ---The Calendar 
+// The Calendar --- The Calendar ---The Calendar 
+// The Calendar --- The Calendar ---The Calendar
+.un-blur-me {
+    transition: filter .6s;
+    filter: grayscale(0) blur(0px);
+}
+
+.blur-me {
+    filter: grayscale(20%) blur(3px);
+}
+
+.cal-body {
+    overflow: hidden; // @include b1();
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    /* z-index: -1 */
+}
+
+.cal-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    max-width: 1400px;
+    max-height: 900px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cal-cover {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* 
+xs (for phones - screens less than 768px wide) 
+sm (for tablets - screens equal to or greater than 768px wide) 
+md (for small laptops - screens equal to or greater than 992px wide) 
+lg (for laptops and desktops - screens equal to or greater than 1200px wide) */
+
+@media only screen and (min-width: 0px)and (orientation: landscape) {
+    .cal-box {
+        /* border: 1px solid red; */
+        width: 16.6vw;
+        height: 25vh;
+        position: relative;
+    }
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes shake-up-down {
+    10%,
+    90% {
+        transform: translate(0, -1px);
+    }
+    20%,
+    80% {
+        transform: translate(0, 2px);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate(0, -4px);
+    }
+    40%,
+    60% {
+        transform: translate(0, 4px);
+    }
+}
+
+// @keyframes turny-turn{
+//     10%,
+//     90% {
+//          transform: rotate(-15deg)
+//     }
+//     20%,
+//     80% {
+//          transform: rotate(35deg)
+//     }
+//     30%,
+//     50%,
+//     70% {
+//          transform: rotate(-35deg)
+//     }
+//     40%,
+//     60% {
+//          transform: rotate(15deg)
+//     }
+// }
+@keyframes turny-turn {
+    16.5% {
+        transform: rotate(-5deg)
+    }
+    33.2%,
+    83% {
+        transform: rotate(20deg)
+    }
+    59.3% {
+        transform: rotate(-20deg)
+    }
+    66.4% {
+        transform: rotate(5deg)
+    }
+}
+
+.lightbox-open-btn {
+    display: none;
+    @include media-med {
+        display: unset;
+    }
+    position: absolute;
+    @include fontSize(16px);
+    background-color: rgba(white, .65);
+    padding: 0 .25rem;
+    border-bottom-right-radius: 6px;
+    transition: .4s;
+    opacity: 0;
+    cursor: pointer;
+    &:hover {
+        color: green;
+    }
+}
+
+.cal-box {
+    /* border: 1px solid red; */
+    width: 25vw;
+    height: 16.6vh;
+    position: relative;
+    @include media-lrg {
+        width: 16.6666%;
+        height: 25%;
+        position: relative;
+        padding: 0px;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+        cursor: zoom-in;
+    }
+    &:hover {
+        .lightbox-open-btn {
+            opacity: 1;
+        }
+    }
+}
+
+.show-cal-img {
+    img {
+        display: unset;
+    }
+}
+
+.cal-number {
+    /* border: 1px solid red; */
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        line-height: 0;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        transition: .5s;
+        &:hover {
+            color: green;
+            animation: shake-up-down 1s;
+        }
+    }
+}
+
+.bad-number {
+    p {
+        &:hover {
+            color: red;
+            animation: shake 1s;
+        }
+    }
+}
+
+/* /// LIGHTBOX /////// LIGHTBOX /////// LIGHTBOX //// */
+
+.lightbox-cont {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: .4s;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation-duration: 1s;
+    animation-name: fadeIn;
+}
+
+.lightbox-img {
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
+    text-align: center;
+    animation-duration: 1s;
+    animation-name: fadeIn; // position: relative;
+    img {
+        //    @include b1();
+        //    object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: scale-down;
+        cursor: zoom-out;
+    }
+}
+
+.lightbox-close-btn {
+    display: none;
+    @include media-med {
+        display: unset;
+    }
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2; // background-color: rgba(white, .25);
+    // display: inline;
+    // padding: .5rem .7rem;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 600;
+    @include fontSize(20px);
+    color: white;
+    transition: .4s;
+    &:hover {
+        animation: turny-turn 1s cubic-bezier(.36, .07, .19, .97) both; // color: orange;
+        font-weight: 500;
+    }
+}
+
+// EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- 
+// EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- 
+// EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- 
+.example-page-message-top {
+    display: none;
+    @include media-sml{
+        display: block
+    };
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(black, .7);
+    padding: .75rem 0;
+    text-align: center;
+    p {
+        color: white;
+        line-height: 1;
+        margin-bottom: 0;
+    }
+}
+
+.example-page-logo {
+    width: 100px;
+    margin: 1rem auto;
+}
+
+.example-page-message-center {
+    // border: 1px solid red;
+    max-width: 770px;
+    border-radius: 5px;
+    width: 90%;
+    margin-top: 5rem;
+    padding: 1rem;
+    background-color: rgba(black, .6);
+    text-align: center;
+    @include media-sml {
+        margin-top: 8rem;
+        margin-top: unset;
+    }
+    p {
+        @include fontSize(20px);
+        color: white; // text-align: center;
+        line-height: 1.2;
+        @include media-sml {
+            @include fontSize(30px); // text-align: center;
+        }
+        ;
+    }
+}

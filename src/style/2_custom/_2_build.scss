@@ -1,0 +1,276 @@
+.master-build-cont {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.push-down-footer {
+    flex: 1;
+}
+
+.tick {
+    color: green;
+}
+
+.cross {
+    color: tomato;
+}
+
+.section-upload,
+.section-cover,
+.section-message,
+.section-checklist,
+.section-preview,
+.complete-cont {
+    // margin-top: 2rem;
+    padding: 2rem 0;
+
+    // @include b1();
+    @include media-sml {
+        padding: 3rem 0;
+    }
+
+    @include media-med {
+        padding: 4rem 0;
+    }
+
+    ;
+}
+
+.section-content {
+    // background-color: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    // @include b1();
+
+    @include media-sml {
+        padding: 3rem 1rem;
+        max-width: 700px;
+    }
+
+    @include media-med {
+        max-width: 800px;
+        padding: 2rem 1rem;
+    }
+
+    @include media-lrg-xl {
+        max-width: 1600px;
+        padding: 3rem 2rem;
+    }
+}
+
+
+
+// SECTION-UPLOAD --- SECTION-UPLOAD ---SECTION-UPLOAD ---
+// SECTION-UPLOAD --- SECTION-UPLOAD ---SECTION-UPLOAD ---
+// SECTION-UPLOAD --- SECTION-UPLOAD ---SECTION-UPLOAD ---
+
+.scissor-upload {
+    position: absolute;
+    top: -17px;
+    right: 25%;
+    z-index: 3;
+    @include fontSize(30px);
+    color: grey;
+}
+
+
+.section-upload {
+    position: relative;
+    background-color: #fff;
+    background-image: url('../images/SVG/xmas-doodle1-grey.svg');
+    background-size: 300px 300px;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-top: 5px dashed silver;
+    border-bottom: 5px solid skyblue;
+
+    padding: 5rem 0;
+
+}
+
+.section-upload-content {
+    position: relative;
+    z-index: 1;
+
+}
+
+.section-upload-content-bkg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(lightgrey, .3);
+    z-index: -1;
+
+}
+
+// SECTION-COVER -- // SECTION-COVER --// SECTION-COVER --
+// SECTION-COVER -- // SECTION-COVER --// SECTION-COVER --
+// SECTION-COVER -- // SECTION-COVER --// SECTION-COVER --
+
+.section-cover {
+    background-color: skyblue;
+    position: relative;
+    z-index: 1;
+    border-bottom: 5px dashed grey;
+    background-image: url('../images/SVG/xmas-doodle2-white.svg');
+    background-size: 400px 400px;
+    background-position: center;
+}
+
+.section-cover-content {
+    background-color: #fff;
+    background-color: #fff;
+    border-radius: 10px;
+    // opacity: .9;
+}
+
+
+// SECTION-MESSAGE --- // SECTION-MESSAGE ---// SECTION-MESSAGE ---
+// SECTION-MESSAGE --- // SECTION-MESSAGE ---// SECTION-MESSAGE ---
+// SECTION-MESSAGE --- // SECTION-MESSAGE ---// SECTION-MESSAGE ---
+
+.section-message {
+    background-color: lightyellow;
+    background-image: url('../images/SVG/xmas-doodle1-grey.svg');
+    background-size: 250px 250px;
+    background-position: center;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 5rem 0;
+
+    position: relative;
+}
+
+.scissor-message {
+    position: absolute;
+    top: -17px;
+    left: 15%;
+    z-index: 3;
+    @include fontSize(30px);
+    color: $secondary;
+    color: grey;
+    transform: rotate(180deg)
+}
+
+// SECTION-CHECLIST ---// SECTION-CHECLIST ---// SECTION-CHECLIST -
+// SECTION-CHECLIST ---// SECTION-CHECLIST ---// SECTION-CHECLIST -
+// SECTION-CHECLIST ---// SECTION-CHECLIST ---// SECTION-CHECLIST
+
+
+.section-checklist {
+    background-color: #ff4cc3;
+    background-image: url('../images/SVG/xmas-doodle2-white.svg');
+    background-size: 400px 400px;
+    background-position: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 6px solid #ff4cc3;
+}
+
+.section-checklist-content {
+    position: relative;
+    border-radius: 10px;
+    background-color: rgba(white, .0);
+    z-index: 1;
+}
+
+.checklist-bkg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(white, .7);
+    z-index: -1;
+}
+
+
+// SECTION PREVIEW - --SECTION PREVIEW - --SECTION PREVIEW - --
+// SECTION PREVIEW - --SECTION PREVIEW - --SECTION PREVIEW - --
+// SECTION PREVIEW - --SECTION PREVIEW - --SECTION PREVIEW - --
+
+.section-preview {
+    background-image: url('../images/SVG/xmas-doodle2-grey.svg');
+    background-size: 400px 400px;
+    background-position: center;
+    
+
+    border-top: 6px dashed lightgrey;
+    border-bottom: 6px solid lightgrey;
+  
+    
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-preview-content {
+    position: relative;
+    border-radius: 10px;
+    background-color: rgba(lightgrey, .3);
+    z-index: 1;
+}
+
+.preview-content-bkg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(white, .7);
+    z-index: -1;
+}
+
+
+// Section launch --- // Section launch ---
+// Section launch --- // Section launch ---
+// Section launch --- // Section launch ---
+
+
+.section-launch {
+    // background-color: rgba(lightgrey, .4);
+    margin-top: 2rem;
+    // border-top: 6px dashed lightgrey;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-launch-content {
+    position: relative;
+    border-radius: 10px;
+    // background-color: rgba(lightgrey, .4);
+    z-index: 1;
+    background-color: rgba(lightgrey, .3);
+    text-align: center;
+}
+
+.launch-content-bkg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // background-color: rgba(white, .7);
+    // background-color: purple;
+    z-index: -1;
+}

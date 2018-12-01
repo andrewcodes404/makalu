@@ -1,0 +1,192 @@
+
+
+.master-home-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.x-page-content {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem 0;
+
+    @include media-sml {
+        margin: auto;
+        padding: 1rem 0;
+        // @include b1();
+    }
+
+
+    @include media-med {
+        max-width: 900px;
+        margin: auto;
+        padding: 2rem 0;
+    }
+
+}
+
+.banner {
+
+    position: relative;
+    // overflow: hidden;
+    // @include b1();
+    height: 65vh;
+    min-height: 300px;
+    max-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include media-sml {
+        min-height: 300px;
+        max-height: 350px;
+    }
+
+    background-image: url('../images/SVG/xmas-doodle2-grey.svg');
+    background-size: 300px 300px;
+    background-position: center;
+}
+
+.banner-video-cont {
+    padding: 0 1rem;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    @include media-sml {   
+        max-width: 600px;
+    }
+
+    
+
+    video {
+        width: 100%;
+        box-shadow: 5px 5px 16px -7px rgba(57, 57, 57, .5);
+    }
+}
+
+.headline-strip {
+    background-color: $primary;
+    text-align: center;
+    padding: 1rem .5rem;
+
+
+    @include media-sml {
+        padding: 1.5rem 0;
+    }
+
+    h1 {
+        line-height: 1;
+        margin-bottom: 0;
+        color: white;
+    }
+}
+
+.strapline-strip {
+    background-color: $secondary;
+    text-align: center;
+    padding: 1rem 0;
+
+    @include media-sml {
+        padding: 1.5rem 0;
+    }
+
+    h2 {
+        line-height: 1;
+        margin-bottom: 0;
+        color: white;
+    }
+}
+
+
+.the-three-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    @include media-sml {
+        justify-content: space-between;
+    }
+}
+
+.three-steps-headline {
+    width: 100%;
+    // text-align: center;
+    margin: 1rem 0 2rem;
+}
+
+.step-item {
+    width: 100%;
+    max-width: 300px;
+
+    @include media-sml {
+        width: 30%;
+    }
+
+
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem .5rem .5rem;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 13px 0px rgba(0, 0, 0, 0.05);
+}
+
+
+.step-number {
+
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 1rem;
+    border-radius: 30px;
+    background-color: $primary;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        color: white;
+        line-height: 1;
+        margin: 0;
+        font-weight: bold;
+    }
+}
+
+
+// LOGIN & REGISTER -- LOGIN & REGISTER --
+// LOGIN & REGISTER -- LOGIN & REGISTER --
+// LOGIN & REGISTER -- LOGIN & REGISTER --
+
+.x-login-reg-bkg {
+    background-color: $primary;
+    background-image: url('../images/SVG/xmas-doodle1-white.svg');
+    background-size: 225px 225px;
+    background-position: center;
+}
+.x-login-reg-cont {
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0;
+
+    @include media-sml {
+        padding: 1rem 0;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @include media-med {
+            justify-content: space-evenly;
+        }
+
+        ;
+
+    }
+}
