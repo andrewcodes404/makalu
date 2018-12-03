@@ -83,8 +83,6 @@
         margin: 1rem 0;
     }
 
-    ;
-
     h2 {
         color: $primary; // color: $secondary;
         font-weight: bold;
@@ -120,7 +118,7 @@
 .form-reminder {
     // margin: 2rem 0;  
     // @include b1();  
-    
+
     margin: 1rem auto 0;
     max-width: 600px;
     display: flex;
@@ -132,7 +130,6 @@
         justify-content: space-evenly;
     }
 
-    ;
 }
 
 .form-reminder-item {
@@ -140,9 +137,11 @@
     margin-bottom: 5px;
     padding: 0;
 
-    @include media-sml{
-    margin-bottom: 1rem;
-    };
+    @include media-sml {
+        margin-bottom: 1rem;
+    }
+
+    ;
 
     ::-webkit-input-placeholder {
         /* Chrome */
@@ -153,23 +152,48 @@
         padding: 0; // padding-bottom: 1rem;
     }
 
-    
+
 }
 
-.timer-message {
-    margin-bottom: 3rem;
-    line-height: 1.2;
-    color: white;
-    @include fontSize(18px);
-    font-weight: 400;
+
+///THE FOLLOWE FORM --- ///THE FOLLOWE FORM  --///THE FOLLOWE FORM 
+
+.follower-form {
+    
+    text-align: center;
+    // margin-bottom: 3rem;
+    background-color: rgba(black, .7);
+    padding: 1rem;
+    border-radius: 10px;
+
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto .5rem;
 
     @include media-sml {
-        @include fontSize(24px);
+        margin: 0 auto 3rem;
     }
 
-    @include media-med {
-        @include fontSize(30px);
+    ;
+    // @include b1();
+
+    p {
+        // margin-bottom: 3rem;
+        line-height: 1.2;
+        color: white;
+        @include fontSize(18px);
+        font-weight: 400;
+
+        @include media-sml {
+            @include fontSize(24px);
+        }
+
+        @include media-med {
+            @include fontSize(30px);
+        }
+
     }
+
 }
 
 //xmas messaeg overlay-- //xmas messaeg overlay--//xmas messaeg overlay
@@ -193,26 +217,50 @@
     @include media-sml {
         justify-content: center;
     }
+}
+
+
+.close-button {
+    color: white;
+    // @include fontSize(40px);
+    position: absolute;
+    transition: .4s;
+
+    &:hover {
+        color: red;
+    }
+
+    @include fontSize(30px);
+    top: 1rem;
+    left: 1rem;
+
+    @include media-med {
+        @include fontSize(40px);
+        top: 1.5rem;
+        left: 1.5rem;
+    }
 
     ;
+
 }
 
 .message {
-
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: center;
-    width: 100%;
-
-    // @include b1();
-    
-
-
-    @include fontSize(30px);
+    align-content: center;
+    width: 90%;
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    @include fontSize(25px);
     color: white;
     text-align: center;
     line-height: 1.2;
+
+    h1 {
+        color: white;
+    }
 
     @include media-sml {
         @include fontSize(45px);
