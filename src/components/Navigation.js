@@ -63,7 +63,7 @@ class Navigation extends React.Component {
             <div className={`new-nav ${this.state.verified && "nav-verified"}`}>
 
                 <div className="nav-text">
-                    <p>CountdownCals.com</p>
+                    <p>CountdownCals.com *</p>
                 </div>
 
                 <div className="nav-logo-cont">
