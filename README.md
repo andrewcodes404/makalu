@@ -1,8 +1,6 @@
-ZERO DOWNTIME
+Countdown Cals
 -------------
 
-Use this branch by switching urls in AWS EB
+Make your own countdown calendar
 
-Then you can deploy the master with zero downtime then switch the urls back when done
-
-Don't forget to pull the master first to make sure this branch is up to date
+Share your best photos with family and friends

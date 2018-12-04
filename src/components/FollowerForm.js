@@ -142,10 +142,9 @@ class Timer extends React.Component {
         return (
             <div className="follower-form">
                 
-                    {/* <div className="flex-one"></div> */}
+                    <div className="flex-one"></div>
 
 
-                    <div className="reminder-box">
                         <p>Get this calendar link &amp; reminder sent to your inbox?</p>
 
                         <Form onSubmit={this.handleSubmit} className="form-reminder">
@@ -173,11 +172,9 @@ class Timer extends React.Component {
                                 <Button className="my-btn" type="primary" htmlType="submit" >Submit</Button>
                             </FormItem>
                         </Form>
-                        <small className="timer-message"> Want your own countdown calendar? It's so easy <span role="img" aria-label="emoji">👉</span> <a href="https://countdowncals.com/">CountdownCals.com</a> </small>
+                        <p> Want your own countdown calendar? It's so easy <a href="https://countdowncals.com/">CountdownCals.com</a> </p>
 
 
-                    </div>
-                    {/* <div className="flex-one"></div> */}
                 </div>
           
         );

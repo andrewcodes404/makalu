@@ -3,8 +3,9 @@ import { db } from '../firebase';
 
 import { withRouter } from 'react-router-dom'
 import FollowerForm from "./FollowerForm";
-//comps
-// import Timer from "./Timer";
+
+// the countdown
+import Countdown from 'react-countdown-now';
 
 // style
 import { Icon } from 'antd'
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === 'production') {
     theDate = ("" + year + month + day)
 } else {
     theDate = ("" + year + month + day)
+    // theDate = 20181130
 }
 
 
@@ -42,9 +44,7 @@ class Calendar extends React.Component {
 
         // get id from url parameter
         const calId = this.props.match.params.uuidForCalendar
-
         db.onceGetImagesForCalender(calId).then((snapshot) => {
-
             //redirect to 404 if the uid is getting no result    
             if (!snapshot.val()) {
                 console.log('the snap is null');
@@ -77,11 +77,13 @@ class Calendar extends React.Component {
 
         }).then((fireImgArray) => {
 
-            ///firebase once always returns a snap shot even if empty
-            // so let's stop it here
+
 
             // TODO: this needs tidy up too many .then()
             // get this then in its own function and run it from here
+
+            ///firebase once always returns a snap shot even if empty
+            // so... if empty let's stop this function here
             if (!fireImgArray) {
                 return null
             }
@@ -90,6 +92,7 @@ class Calendar extends React.Component {
             fireImgArray.map((el, index) => {
                 let dateIsGood = false
                 let visible = false
+
                 //We can use the index as a sort of date 
                 //and check it against the real date
                 if (day >= index + 1 && theDate >= 20181201) {
@@ -109,6 +112,20 @@ class Calendar extends React.Component {
                 })
             })
 
+            //if imagePAthArray is less than 24 then add a blank
+            if (imgPathArray.length < 24) {
+                const blankTotal = 24 - imgPathArray.length
+                for (let index = 0; index < blankTotal; index++) {
+                    imgPathArray.push({
+                        path: null,
+                        date: null,
+                        visible: false,
+                        dateIsGood: false,
+                        showModal: false
+                    })
+                }
+            }
+
             //Lets Randomize that 👨‍🌾 🦀 🌾 🦀
             imgPathArray.sort(function () {
                 return 0.5 - Math.random();
@@ -118,7 +135,7 @@ class Calendar extends React.Component {
             this.setState({ ...this.state, imgPathArray })
 
         }).catch(error => {
-            console.log("cloud GET err = ", error);
+            console.log("err = ", error);
         });
     }
 
@@ -137,9 +154,6 @@ class Calendar extends React.Component {
                 this.setState(newState)
             }
         }
-
-
-
     }
 
     handleShowLightBox = (path, visible, dateGood) => {
@@ -160,40 +174,63 @@ class Calendar extends React.Component {
     }
 
     removeMessage = () => {
-        console.log('it clicked');
-
         this.setState({
             showMessage: false
         })
     }
 
+    timerTarget = 'Sat, 01 Dec 2019 00:00:00'
+    // if (process.env.NODE_ENV === 'production') {
+    //     timerTarget = 'Sat, 01 Dec 2018 00:00:00'
+    // }
+
+
+    countdownRender = ({ days, hours, minutes, seconds, completed }) => {
+        if (completed) {
+            // Render a completed state
+            return null
+        } else {
+            // Render a countdown
+            return (
+                <h2 className="timer">{days}<span className="">d</span>:{hours}h:{minutes}m:<div className="secs">{seconds}</div>s</h2>
+
+            );
+        }
+    };
+
+
 
     render() {
 
-        console.log("theDate = ", theDate);
-
         if (this.state.isAuthenticating) return null;
-
-
         return (
 
             <div>
-
                 <div className="cal-body">
 
-                    {/* {process.env.NODE_ENV === 'production' && <Timer name={this.state.username} />} */}
-                    {/* {theDate < 20181201 && <Timer name={this.state.username} calId={this.state.calId}/>} */}
+                    {theDate < 20181201
+                        ? <div className="message-cont">
 
-                    {this.state.showMessage ? <div className="message-cont" >
-                        {/* <div className=" border1" onClick={this.removeMessage}></div> */}
-                        <div className="message" onClick={this.removeMessage}>{this.state.message}</div>
-                        {/* <div className="flex-one"></div> */}
+                            <div className="message">
+                                <h1>Countdown to {this.state.username}'s advent calendar</h1>
+                                <Countdown date={this.timerTarget} renderer={this.countdownRender} />
+                            </div>
 
-                        <FollowerForm />
+                            <FollowerForm />
 
-                    </div> : null}
+                        </div>
+                        : null
+                    }
 
+                    {theDate > 20181201 && this.state.showMessage
+                        ? <div className="message-cont">
+                            <Icon type="close-circle" className="close-button" onClick={this.removeMessage} />
 
+                            <div className="message" onClick={this.removeMessage}>{this.state.message}</div>
+
+                            <FollowerForm />
+                        </div>
+                        : null}
 
                     <div className={`cal-container un-blur-me   ${this.state.showMessage && "blur-me"}`}>
 
@@ -205,15 +242,8 @@ class Calendar extends React.Component {
 
                                 <div onClick={() => { this.handleShowLightBox(el.path, el.visible, el.dateIsGood) }} key={index} className={`cal-box ${el.visible && el.dateIsGood && "show-cal-img"}`}>
 
-
-                                    {/* {el.visible && <div className="lightbox-open-btn">
-                                    <Icon type="eye" theme="filled" className="icon-eye" />
-                                </div>} */}
-
-
-                                    {/* <img src={el.visible && el.dateIsGood ? `https://res.cloudinary.com/dcqi9fn2y/image/upload/w_300,h_300,c_fill/${el.path}` : ""} alt="" /> */}
-
-                                    <img src={`https://res.cloudinary.com/dcqi9fn2y/image/upload/w_300,h_300,c_fill/${el.path}`} alt="" />
+                                    {el.path && <img src={`https://res.cloudinary.com/dcqi9fn2y/image/upload/w_300,h_300,c_fill/${el.path}`} alt="" />}
+                                    
 
                                     {(!el.visible && el.dateIsGood) || (!el.visible && !el.dateIsGood)
                                         ? (

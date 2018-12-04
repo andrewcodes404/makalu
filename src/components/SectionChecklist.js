@@ -2,15 +2,13 @@ import React from 'react';
 
 class SectionChecklist extends React.Component {
 
-
-
     itclicked = () => {
         console.log('it clicked');
 
     }
     render() {
-        return (
 
+        return (
 
             <div className="section-checklist">
 
@@ -25,7 +23,7 @@ class SectionChecklist extends React.Component {
                             ? (<p>Upload images <span className="tick"> &#10003;</span></p>)
                             : (<div>
                                 <p>Upload images <span className="cross">&#10008;
-                                </span><span onClick={this.props.scrollToUpload} className="check-message">You need to upload {this.props.imgLeft} more images</span> </p>
+                                </span><span onClick={this.props.scrollToUpload} className="check-message">You need to upload {this.props.imgLeft} more image{this.props.imgLeft > 1 && "s" }</span> </p>
 
                             </div>)}
 
