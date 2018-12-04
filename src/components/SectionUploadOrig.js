@@ -92,6 +92,7 @@ class SectionUpload extends React.Component {
     //Delete image Modal -- //Delete image Modal
 
     modalDeleteImg = (uuid, firebaseKey, index) => {
+
         Modal.error({
             title: 'Are you sure? delete this image?',
 
@@ -115,6 +116,7 @@ class SectionUpload extends React.Component {
     //Delete image functon -- //Delete image functon
 
     handleDeleteImg = (uuid, firebaseKey, index) => {
+
         db.fireDeleteURL(uuid, firebaseKey)
             .then(() => {
                 console.log("Remove succeeded.")
@@ -126,33 +128,31 @@ class SectionUpload extends React.Component {
 
         // TODO: need to delete the image from cloudinary
         // cloudinary.v2.uploader.destroy(public_id, options, callback);
+
     }
 
     render() {
 
         let name = this.props.user.name
+
         //ARGH!! ☠️ remove white space and non alphaNumeric from username
         // was breaking the cloudinary create-folder
-        if (name) {
+        if (name){
             name = name.replace(/\s+/g, '');
             name = name.replace(/\W/g, '')
-        }
-
+        }        
+        
         const uuid = this.props.user.id
         const images = this.props.userImages
-
-        /// days left until xmas
-      
-
-        
+        const imgCountNeeded = 24
         const imgCount = this.props.userImages.length
         let imgCountComplete
-        if (imgCount >= this.props.imgCountNeeded) {
+        if (imgCount >= imgCountNeeded) {
             imgCountComplete = true
         } else { imgCountComplete = false }
 
 
-        const imgLeft = this.props.imgCountNeeded - imgCount
+        const imgLeft = imgCountNeeded - imgCount
         if (this.props.user.isAuthenticating) return null;
         return (
             <div className="section-upload">
@@ -167,6 +167,7 @@ class SectionUpload extends React.Component {
 
                         <h2 className="welcome"><span role="img" aria-label="emoji">🎅</span> Ho Ho Ho... it's time to start your countdown calendar.</h2>
 
+
                         {imgCountComplete
                             ? <div>
                                 <p>Image upload complete
@@ -175,7 +176,7 @@ class SectionUpload extends React.Component {
                             </div>
                             : (
                                 <div>
-                                    <p> 1)  Upload {this.props.imgCountNeeded} images from your folders, facebook or instagram (press the upload button to begin).</p>
+                                    <p> 1)  Upload 24 images from your folders, facebook or instagram (press the upload button to begin).</p>
                                     <div className="upload-btn"
                                         onClick={() => { this.uploadWidget(name, uuid, imgLeft) }}>
 
@@ -189,7 +190,7 @@ class SectionUpload extends React.Component {
 
 
                         <div className="upload-flex-cont">
-                            {[...Array(this.props.imgCountNeeded)].map((e, i) => {
+                            {[...Array(24)].map((e, i) => {
                                 return (
                                     <div className="upload-flexitem" key={i}>
 

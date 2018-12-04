@@ -172,7 +172,7 @@ class Timer extends React.Component {
                                 <Button className="my-btn" type="primary" htmlType="submit" >Submit</Button>
                             </FormItem>
                         </Form>
-                        <p> Want your own countdown calendar? It's so easy <span role="img" aria-label="emoji">👉</span> <a href="https://countdowncals.com/">CountdownCals.com</a> </p>
+                        <p> Want your own countdown calendar? It's so easy <a href="https://countdowncals.com/">CountdownCals.com</a> </p>
 
 
                 </div>

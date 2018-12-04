@@ -285,6 +285,10 @@ $content-width : 95%;
 
 
 .legal {
+
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
   p {
     @include fontSize(17px);
   }
@@ -307,27 +311,21 @@ $content-width : 95%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 
-
 .not-found-text-cont {
-
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
 }
-
 
 .not-found-text {
   background-color: orange;
@@ -340,7 +338,6 @@ $content-width : 95%;
 
 .go-home {
   cursor: pointer;
-
   &:hover {
     color: yellow
   }

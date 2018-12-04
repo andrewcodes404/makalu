@@ -55,11 +55,20 @@ class Build extends React.Component {
         }
     }
 
-
-
     render() {
 
-        const imgCountNeeded = 24
+        const now = new Date();
+        const year = now.getFullYear()
+        const month = now.getMonth() + 1
+        const day = "0" + now.getDate()
+        const theDate = ("" + year + month + day)
+
+        let daysUntilXmas = 20181225 - theDate
+        if (daysUntilXmas > 24) {
+            daysUntilXmas = 24
+        }
+
+        const imgCountNeeded = daysUntilXmas
         const imgCount = this.props.userImages.length
         const imgLeft = imgCountNeeded - imgCount
         let imgCountComplete
@@ -69,16 +78,14 @@ class Build extends React.Component {
 
 
 
-        if (this.props.user.isAuthenticating) return null;
-
-
         let checklistComplete = false
         if (this.props.user.xmasMessage && imgCountComplete && this.props.user.coverUrl) {
             checklistComplete = true
         }
 
-        // console.log("this.props.user = ", this.props.user);
 
+
+        if (this.props.user.isAuthenticating) return null;
 
         return (
             <div className="master-build-cont">
@@ -96,24 +103,10 @@ class Build extends React.Component {
 
                             <div className="">
 
-                                {/* <div className="strip-top">
-
-                               
-                                        <h2>🎅 Ho Ho Ho... it's time to start making your countdown calendar.</h2>
-                                        <h2>1) Upload 24 images from your folders, facebook or instagram (press the upload button to start).</h2>
-
-                            
-                                   
-                                </div> */}
-                                
-
                                 <div ref={this.sectionUpload} >
-                                    <SectionUpload />
+                                    <SectionUpload imgCountNeeded={imgCountNeeded} />
                                 </div>
 
-                                {/* <div className="strip"> */}
-                                    {/* <p>2) Now pick a cover image from the options below.</p> */}
-                                {/* </div> */}
 
                                 <div ref={this.sectionCover}>
                                     <SectionCoverPicker />
