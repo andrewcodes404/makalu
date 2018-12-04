@@ -44,9 +44,7 @@ class Calendar extends React.Component {
 
         // get id from url parameter
         const calId = this.props.match.params.uuidForCalendar
-
         db.onceGetImagesForCalender(calId).then((snapshot) => {
-
             //redirect to 404 if the uid is getting no result    
             if (!snapshot.val()) {
                 console.log('the snap is null');
@@ -79,11 +77,13 @@ class Calendar extends React.Component {
 
         }).then((fireImgArray) => {
 
-            ///firebase once always returns a snap shot even if empty
-            // so let's stop it here
+
 
             // TODO: this needs tidy up too many .then()
             // get this then in its own function and run it from here
+
+            ///firebase once always returns a snap shot even if empty
+            // so... if empty let's stop this function here
             if (!fireImgArray) {
                 return null
             }
@@ -92,6 +92,7 @@ class Calendar extends React.Component {
             fireImgArray.map((el, index) => {
                 let dateIsGood = false
                 let visible = false
+
                 //We can use the index as a sort of date 
                 //and check it against the real date
                 if (day >= index + 1 && theDate >= 20181201) {
@@ -111,6 +112,20 @@ class Calendar extends React.Component {
                 })
             })
 
+            //if imagePAthArray is less than 24 then add a blank
+            if (imgPathArray.length < 24) {
+                const blankTotal = 24 - imgPathArray.length
+                for (let index = 0; index < blankTotal; index++) {
+                    imgPathArray.push({
+                        path: null,
+                        date: null,
+                        visible: false,
+                        dateIsGood: false,
+                        showModal: false
+                    })
+                }
+            }
+
             //Lets Randomize that 👨‍🌾 🦀 🌾 🦀
             imgPathArray.sort(function () {
                 return 0.5 - Math.random();
@@ -120,7 +135,7 @@ class Calendar extends React.Component {
             this.setState({ ...this.state, imgPathArray })
 
         }).catch(error => {
-            console.log("cloud GET err = ", error);
+            console.log("err = ", error);
         });
     }
 
@@ -139,9 +154,6 @@ class Calendar extends React.Component {
                 this.setState(newState)
             }
         }
-
-
-
     }
 
     handleShowLightBox = (path, visible, dateGood) => {
@@ -162,8 +174,6 @@ class Calendar extends React.Component {
     }
 
     removeMessage = () => {
-        console.log('it clicked');
-
         this.setState({
             showMessage: false
         })
@@ -192,11 +202,7 @@ class Calendar extends React.Component {
 
     render() {
 
-        console.log("theDate = ", theDate);
-
         if (this.state.isAuthenticating) return null;
-
-
         return (
 
             <div>
@@ -204,12 +210,12 @@ class Calendar extends React.Component {
 
                     {theDate < 20181201
                         ? <div className="message-cont">
-                   
+
                             <div className="message">
                                 <h1>Countdown to {this.state.username}'s advent calendar</h1>
                                 <Countdown date={this.timerTarget} renderer={this.countdownRender} />
                             </div>
-                          
+
                             <FollowerForm />
 
                         </div>
@@ -218,13 +224,14 @@ class Calendar extends React.Component {
 
                     {theDate > 20181201 && this.state.showMessage
                         ? <div className="message-cont">
-                             <Icon type="close-circle" className="close-button" onClick={this.removeMessage}/>
+                            <Icon type="close-circle" className="close-button" onClick={this.removeMessage} />
 
                             <div className="message" onClick={this.removeMessage}>{this.state.message}</div>
-                         
+
                             <FollowerForm />
                         </div>
                         : null}
+
                     <div className={`cal-container un-blur-me   ${this.state.showMessage && "blur-me"}`}>
 
                         <div className="cal-cover" style={{ backgroundImage: `url(${this.state.coverPath})` }}></div>
@@ -235,8 +242,8 @@ class Calendar extends React.Component {
 
                                 <div onClick={() => { this.handleShowLightBox(el.path, el.visible, el.dateIsGood) }} key={index} className={`cal-box ${el.visible && el.dateIsGood && "show-cal-img"}`}>
 
-
-                                    <img src={`https://res.cloudinary.com/dcqi9fn2y/image/upload/w_300,h_300,c_fill/${el.path}`} alt="" />
+                                    {el.path && <img src={`https://res.cloudinary.com/dcqi9fn2y/image/upload/w_300,h_300,c_fill/${el.path}`} alt="" />}
+                                    
 
                                     {(!el.visible && el.dateIsGood) || (!el.visible && !el.dateIsGood)
                                         ? (
