@@ -114,12 +114,8 @@ class Calendar extends React.Component {
 
             //if imagePAthArray is less than 24 then add a blank
             if (imgPathArray.length < 24) {
-
                 const blankTotal = 24 - imgPathArray.length
-                console.log("blankTotal = ", blankTotal);
-
                 for (let index = 0; index < blankTotal; index++) {
-                    // const element = array[index];
                     imgPathArray.push({
                         path: null,
                         date: null,
@@ -135,13 +131,11 @@ class Calendar extends React.Component {
                 return 0.5 - Math.random();
             });
 
-
-            console.log("imgPathArray = ", imgPathArray);
             //Now add that to state
             this.setState({ ...this.state, imgPathArray })
 
         }).catch(error => {
-            console.log("cloud GET err = ", error);
+            console.log("err = ", error);
         });
     }
 
@@ -160,9 +154,6 @@ class Calendar extends React.Component {
                 this.setState(newState)
             }
         }
-
-
-
     }
 
     handleShowLightBox = (path, visible, dateGood) => {
@@ -183,8 +174,6 @@ class Calendar extends React.Component {
     }
 
     removeMessage = () => {
-        console.log('it clicked');
-
         this.setState({
             showMessage: false
         })
@@ -213,11 +202,7 @@ class Calendar extends React.Component {
 
     render() {
 
-        console.log("theDate = ", theDate);
-
         if (this.state.isAuthenticating) return null;
-
-
         return (
 
             <div>
