@@ -203,6 +203,8 @@ class Calendar extends React.Component {
     render() {
 
         if (this.state.isAuthenticating) return null;
+        console.log("this.state from Calendar.js = ", this.state);
+        console.log("this.state.calId = ", this.state.calId);
         return (
 
             <div>
@@ -216,7 +218,11 @@ class Calendar extends React.Component {
                                 <Countdown date={this.timerTarget} renderer={this.countdownRender} />
                             </div>
 
-                            <FollowerForm />
+                            <FollowerForm
+                                test={"a test"}
+                                calId={this.state.calId}
+                                calCreator={this.state.username}
+                            />
 
                         </div>
                         : null
@@ -228,7 +234,10 @@ class Calendar extends React.Component {
 
                             <div className="message" onClick={this.removeMessage}>{this.state.message}</div>
 
-                            <FollowerForm />
+                            <FollowerForm
+                                calId={this.state.calId}
+                                calCreator={this.state.username}
+                            />
                         </div>
                         : null}
 
@@ -243,7 +252,7 @@ class Calendar extends React.Component {
                                 <div onClick={() => { this.handleShowLightBox(el.path, el.visible, el.dateIsGood) }} key={index} className={`cal-box ${el.visible && el.dateIsGood && "show-cal-img"}`}>
 
                                     {el.path && <img src={`https://res.cloudinary.com/dcqi9fn2y/image/upload/w_300,h_300,c_fill/${el.path}`} alt="" />}
-                                    
+
 
                                     {(!el.visible && el.dateIsGood) || (!el.visible && !el.dateIsGood)
                                         ? (
@@ -285,8 +294,6 @@ class Calendar extends React.Component {
         );
     }
 }
-
-
 
 
 export default withRouter(Calendar)

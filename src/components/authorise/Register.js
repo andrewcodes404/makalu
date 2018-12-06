@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { auth, db } from '../../firebase';
-import { connect } from 'react-redux'
+import { db } from '../../firebase';
+import { auth } from '../../firebase';
+// import { connect } from 'react-redux'
 
 //style
 import { Form, Input, Icon, Checkbox, Button, Modal } from 'antd';
@@ -33,77 +34,24 @@ class Register extends React.Component {
         };
     }
 
-    componentDidMount() {
-        //is user already loggedIn? and verified
-        // if (this.props.user.loggedIn && this.props.user.emailVerified) {
-        //     this.props.history.push('/build')
-        // }
-    }
-
-    componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-        // if (this.props.user.loggedIn !== prevProps.user.loggedIn) {
-        //     this.props.history.push('/build')
-        // }
-    }
-
-    // registerUser = (values) => {
-
-    //     console.log(' no error reisterUser() running 🏃‍♂️');
-
-    //     const email = values.email
-    //     const password = values.password
-    //     const username = values.username.substr(0, 1).toUpperCase() + values.username.substr(1);
-
-
-    //     auth.doCreateUserWithEmailAndPassword(email, password)
-    //         .then(authUser => {
-    //             console.log(' no error handleSubmit() running 🏃‍♂️');
-    //             this.props.form.resetFields()
-    //             db.doCreateUser(authUser.user.uid, username, email)
-
-    //             authUser.user.updateProfile({
-    //                 displayName: values.username,
-    //             }).then(function () {
-    //                 // Update Profile
-    //                 // console.log('display name updated sent')
-    //                 authUser.user.sendEmailVerification().then(function () {
-    //                     // Email sent.
-    //                     console.log('email verification sent sent');
-
-    //                 }).catch(function (error) {
-    //                     // An error happened.
-    //                     console.log("email error : ", error);
-    //                 });
-    //             }).catch(function (error) {
-    //                 // An error happened.
-    //                 console.log("update user error : ", error);
-    //             });
-
-    //         }).catch(error => {
-    //             console.log("error from doCreateUserWithEmailAndPassword = ", error);
-    //         })
-    // }
-
     //1 doCreateUserWithEmailAndPassword
     //2 update profiile with username
-    //3 authUser.user.sendEmailVerification()
-    //4 db.doCreateUser(authUser.user.uid, username, email)
-
+    //3 db.doCreateUser(authUser.user.uid, username, email)
+    //4 authUser.user.sendEmailVerification()
 
     registerUser = (values) => {
 
         const email = values.email;
         const password = values.password;
 
-        auth.doCreateUserWithEmailAndPassword(email, password)
+        // auth.fireCreateUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email, password)
             .then((authUser) => {
                 console.log('user created ✔️');
                 this.updateUserName(authUser)
             })
             .catch( (error) => {
-                // An error happened.
-                console.log("🔥 CreateUserWithEmailAndPassword : ", error);
+                console.log("🔥 fireCreateUserWithEmailAndPassword : ", error);
                 if (error.code === "auth/email-already-in-use") {
                     modalEmailAlreadyRegistered()
                     //reset form
@@ -142,8 +90,6 @@ class Register extends React.Component {
 
                 //reset form
                 this.props.form.resetFields()
-
-
             }, function (error) {
                 // An error happened.
                 console.log('🔥 error at  addUserToDb()', error);
@@ -161,34 +107,7 @@ class Register extends React.Component {
             });
     }
 
-    // addUserToDb = (authUser) => {
-
-    //     const id = authUser.uid
-    //     const displayName = authUser.displayName
-    //     const email = authUser.email
-
-    //     console.log("authUser = ", authUser);
-    //     console.log("id = ", id);
-
-    //     db.addUserToDb(authUser.uid, authUser.displayName, authUser.email)
-
-    //         .then(function () {
-    //             // Verification email sent.
-    //             console.log('user added to db ✔️');
-
-    //             //reset form
-    //             this.props.form.resetFields()
-
-    //             //user will log out automatically if email not verified
-
-    //         }, function (error) {
-    //             // An error happened.
-    //             console.log('🔥 error at  addUserToDb()', error);
-    //         });
-    // }
-
-
-
+    
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -298,22 +217,12 @@ class Register extends React.Component {
                         <Button className="my-btn" type="primary" htmlType="submit">Register</Button>
                     </div>
 
-
-
                 </Form>
 
-                {/* <Button onClick={modalEmailSent}>Click Me</Button> */}
             </div>
         );
     }
 }
 
-const WrappedRegistrationForm = Form.create()(Register);
-
-function mapStateToProps(state) {
-    return {
-        user: state.user
-    }
-}
-
-export default connect(mapStateToProps)(WrappedRegistrationForm)
+const RegistrationForm = Form.create()(Register);
+export default RegistrationForm

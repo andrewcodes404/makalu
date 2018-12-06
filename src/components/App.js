@@ -8,7 +8,7 @@ import { logInAC, logOutAC } from '../actions';
 
 //Firebase
 import { db } from '../firebase';
-import { auth } from '../firebase/firebase';
+import { auth } from '../firebase';
 
 //Comps
 import NotFound from "./NotFound";
@@ -33,40 +33,49 @@ class App extends React.Component {
     //watching for change in Auth change   
 
     auth.onAuthStateChanged((user) => {
-
-    if (user) {
-      console.log("user = ", user);
-      // // Email Verification -- TURNED OFF FOR DEV 👀 👇 👀 👇 👀 👇 👀
-      let emailVerified = null;
-      if (process.env.NODE_ENV === 'production') {
-        emailVerified = user.emailVerified;
-      } else {
-        emailVerified = true;
-      }
-
-      db.onceGetUser(user.uid).then((snapshot) => {
-        // careful - register user will auto login before 
-        // user added to db so this checks if there is a snapshot 
-        //before sending to redux
-        if (snapshot.val()) {
-          this.props.logInAC(snapshot.val(), emailVerified);
+      if (user) {
+        console.log("yes user");
+        let emailVerified = null;
+        if (process.env.NODE_ENV === 'production') {
+          emailVerified = user.emailVerified;
         } else {
-          this.props.logOutAC();
+          // 👇 Turn ON/OFF for dev 
+          emailVerified = user.emailVerified;
+          // emailVerified = true;
         }
-      })
-      //with the authenticated ID we can acces that users data from the db and send it to the redux store    
-      // if not call the LogoutAC to blank the store           
-    } else {
-      console.log('no user');
 
-      this.props.logOutAC();
-    }
-
+        if (!emailVerified) {
+          auth.signOut()
+          this.props.logOutAC();
+        } else {
+          console.log('email is verified');
+          this.getUserInRedux(user, emailVerified)
+        }
+      } else {
+        console.log('no user');
+        this.props.logOutAC();
+      }
     })
   }
 
+
+  getUserInRedux = (user, emailVerified) => {
+    db.onceGetUser(user.uid).then((snapshot) => {
+      // careful - register user will auto login before 
+      // user added to db so this checks if there is a snapshot 
+      //before sending to redux
+      if (snapshot.val()) {
+        this.props.logInAC(snapshot.val(), emailVerified);
+      } else {
+        this.props.logOutAC();
+      }
+    })
+  }
+
+
   render() {
 
+    
     //Stop everything until user logged in or not    
     if (this.props.user.isAuthenticating) return null;
     if (this.props.user.loggedIn && this.props.user.emailVerified) return (

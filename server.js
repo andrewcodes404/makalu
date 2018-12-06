@@ -140,8 +140,6 @@ app.get('/:id', function (request, response, next) {
     })
 });
 
-
-
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'build')));
 

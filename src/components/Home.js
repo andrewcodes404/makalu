@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import { Icon } from 'antd';
 
 //comps
 import Login from "./authorise/Login";
@@ -10,9 +8,6 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 
 //files
-
-// const calVid = "https://s3.eu-west-2.amazonaws.com/elasticbeanstalk-eu-west-2-431995029029/countdown_images/cc_vid1.mp4";
-
 const calVid = "https://s3.eu-west-2.amazonaws.com/elasticbeanstalk-eu-west-2-431995029029/countdown_images/cc_vid1_optimised.mp4"
 
 const videoBkg = "https://s3.eu-west-2.amazonaws.com/elasticbeanstalk-eu-west-2-431995029029/countdown_images/cc_vid_bkg2.jpg"
@@ -32,14 +27,9 @@ class Home extends React.Component {
     scrollToSection3 = () => { this.section3.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     scrollToTop = () => { window.scrollTo({ top: 0, behavior: "smooth" }); }
 
-    verifiedUser = this.props.user.loggedIn && this.props.user.emailVerified ? true : false
 
     render() {
-
-        if (this.props.user.isAuthenticating) return null;
-
         return (
-
             <div className="master-home-container">
                 <Navigation scrollToLogin={this.scrollToLogin} />
 
@@ -82,14 +72,14 @@ class Home extends React.Component {
                             <div className="step-number">
                                 <h3>2</h3>
                             </div>
-                            <p>Pick a cover image & write a festive message.</p>
+                            <p>Pick a cover image &amp; write a festive message.</p>
                         </div>
 
                         <div className="step-item">
                             <div className="step-number">
                                 <h3>3</h3>
                             </div>
-                            <p>Launch your calendar and share your unique link with friends & family.</p>
+                            <p>Launch your calendar and share your unique link with friends &amp; family.</p>
                         </div>
 
                         <h2 className="three-steps-headline">Have look at an example here <Link to="/example/xmas">example-xmas-calendar</Link> </h2>
@@ -113,10 +103,5 @@ class Home extends React.Component {
         );
     }
 }
-function mapStateToProps(state) {
-    return {
-        user: state.user
-    }
-}
 
-export default connect(mapStateToProps)(Home)
+export default Home
