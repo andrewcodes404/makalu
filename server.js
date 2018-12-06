@@ -27,6 +27,9 @@ app.get('/', function (request, response) {
         if (err) {
             return console.log(err);
         }
+        
+        data = data.replace(/\$GOOGLE_SITE_VERI/g, 'RMymLLxmmjXy_VdMNyWgvQUppHRNx8h9F-t6JmztQjs');
+        data = data.replace(/\$GOOGLE_TAG/g, 'UA-96559774-16');
         data = data.replace(/\$TWITTER_TITLE/g, 'Create your personal online advent calendar');
         data = data.replace(/\$TWITTER_DESC/g, "Make your own digital advent calendar");
         data = data.replace(/\$TWITTER_IMAGE/g, "https://s3.eu-west-2.amazonaws.com/elasticbeanstalk-eu-west-2-431995029029/countdown_images/cc_twittercard_cal.jpg");
@@ -70,7 +73,8 @@ app.get('/example/:id', function (request, response, next) {
             if (err) {
                 return console.log(err);
             }
-
+            data = data.replace(/\$GOOGLE_SITE_VERI/g, 'RMymLLxmmjXy_VdMNyWgvQUppHRNx8h9F-t6JmztQjs');
+            data = data.replace(/\$GOOGLE_TAG/g, 'UA-96559774-16');
             data = data.replace(/\$TWITTER_TITLE/g, `🎄Check out the ${paramId} advent calender 🎄`);
             data = data.replace(/\$TWITTER_DESC/g, "Make your own digital advent calendar");
             data = data.replace(/\$TWITTER_IMAGE/g, cardImage);
@@ -115,7 +119,8 @@ app.get('/:id', function (request, response, next) {
             if (err) {
                 return console.log(err);
             }
-
+            data = data.replace(/\$GOOGLE_SITE_VERI/g, 'RMymLLxmmjXy_VdMNyWgvQUppHRNx8h9F-t6JmztQjs');
+            data = data.replace(/\$GOOGLE_TAG/g, 'UA-96559774-16');
             data = data.replace(/\$TWITTER_TITLE/g, `🎄Check out ${username}'s Advent Calendar🎄`);
             data = data.replace(/\$TWITTER_DESC/g, "Make your own digital advent calendar");
             data = data.replace(/\$TWITTER_IMAGE/g, coverUrl);
@@ -134,8 +139,6 @@ app.get('/:id', function (request, response, next) {
         });
     })
 });
-
-
 
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'build')));

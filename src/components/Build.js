@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { addImageAC, deleteImageAC } from '../actions'
 import { withRouter } from 'react-router-dom'
 
-//style
-// import { Icon } from 'antd'
-
 //comps
 import Navigation from "./Navigation";
 import SectionUpload from "./SectionUpload";
@@ -30,15 +27,12 @@ class Build extends React.Component {
         }
     }
 
-    //   scrollToMessage = () => { window.scrollTo({ top: 0, behavior: "smooth" }); }
-
+   
     scrollToUpload = () => { this.sectionUpload.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     scrollToCover = () => { this.sectionCover.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     scrollToMessage = () => { this.sectionMessage.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     scrollToPreview = () => { this.sectionPreview.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
 
-
-    // scrollToPreview = () => { window.scrollTo(5000, 1000); }
 
     componentDidMount() {
         window.scrollTo(0, 0);
@@ -92,8 +86,6 @@ class Build extends React.Component {
                 <Navigation username={this.props.user.name} />
 
                 
-
-
                     {this.props.user.calendarComplete
                         ? (<>
                             <Complete />

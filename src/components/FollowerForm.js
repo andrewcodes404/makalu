@@ -1,19 +1,8 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Modal } from 'antd';
 import { db } from '../firebase';
-// the countdown
-// import Countdown from 'react-countdown-now';
 
 const FormItem = Form.Item;
-
-// let timerTarget = 'Sat, 01 Dec 2018 00:00:00'
-// if (process.env.NODE_ENV === 'production') {
-//     timerTarget = 'Sat, 01 Dec 2018 00:00:00'
-// }
-// function hasErrors(fieldsError) {
-//     return Object.keys(fieldsError).some(field => fieldsError[field]);
-// }
-
 
 function modalEmailAlreadyFollowing() {
     const modal = Modal.warning({
@@ -29,52 +18,27 @@ function modalEmailSent(name, email) {
     setTimeout(() => modal.destroy(), 5000);
 }
 
-class Timer extends React.Component {
+class FollowerForm extends React.Component {
 
-    constructor(props) {
-        super(props);
-        // Don't call this.setState() here!
-        this.state = {
-            error: false,
-            errorMessage: null,
-            errorBtn: null,
-            popUp: false,
-            visible: false,
-            authUser: null,
-            topRightXinModalVisable: true
-        };
-    }
-
-    componentDidMount() {
-        // To disabled submit button at the beginning.
-        // this.props.form.validateFields();
-        console.log("this.props = ", this.props);
-
-    }
 
     handleSubmit = (e) => {
-       
-        e.preventDefault();
         
+        e.preventDefault();
+
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+            
                 this.props.form.resetFields()
                 const email = values.email
                 const name = values.name
                 const calId = this.props.calId
-                const calCreator = this.props.name
+                const calCreator = this.props.calCreator
 
                 //check to see if email already follows this cal
                 db.fireCheckFollowers(calId).then((snapshot) => {
-
-
                     const snap = snapshot.val()
-                    console.log("snap = ", snap);
-                    
-                
+                    // console.log("snap = ", snap);                                  
                     let match = null
-
                     if (snap) {
                         Object.keys(snap).map((key) => {
                         
@@ -91,8 +55,6 @@ class Timer extends React.Component {
                         match = false
                     }
                     
-
-
                     if (match){
                         console.log('match is true');
                         modalEmailAlreadyFollowing()
@@ -100,8 +62,7 @@ class Timer extends React.Component {
                     } else {
                         modalEmailSent(name, email)
                         this.addToFollowers(email, calId, name, calCreator)
-                        // modal
-                        
+                        // modal 
                     }
                   
                 })
@@ -114,11 +75,10 @@ class Timer extends React.Component {
     addToFollowers = (email, calId, name, calCreator) => {
         db.fireAddReminderEmail(email, calId, name, calCreator)
             .then(() => {
-                console.log('added to reminder-list')
+                console.log('added to followers list')
             }, (error) => {
                 console.log('🔥 error at  fireAddReminderEmail()', error);
             })
-
     }
 
 
@@ -135,21 +95,19 @@ class Timer extends React.Component {
         }
     };
 
-
     render() {
 
+        console.log("FolowerForm.js this.props = ", this.props);
+        
         const { getFieldDecorator } = this.props.form;
         return (
             <div className="follower-form">
                 
                     <div className="flex-one"></div>
 
-
                         <p>Get this calendar link &amp; reminder sent to your inbox?</p>
 
                         <Form onSubmit={this.handleSubmit} className="form-reminder">
-
-
                             <FormItem className="form-reminder-item">
                                 {getFieldDecorator('name', {
                                     rules: [{ required: true, message: 'Please input your name' }],
@@ -171,6 +129,7 @@ class Timer extends React.Component {
                             <FormItem className="form-reminder-item">
                                 <Button className="my-btn" type="primary" htmlType="submit" >Submit</Button>
                             </FormItem>
+
                         </Form>
                         <p> Want your own countdown calendar? It's so easy <a href="https://countdowncals.com/">CountdownCals.com</a> </p>
 
@@ -180,5 +139,5 @@ class Timer extends React.Component {
         );
     }
 }
-const WrappedTimer = Form.create()(Timer);
-export default WrappedTimer
+const WrappedFollowerForm = Form.create()(FollowerForm);
+export default WrappedFollowerForm

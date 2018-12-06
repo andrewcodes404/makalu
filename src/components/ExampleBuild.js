@@ -29,7 +29,7 @@ class SectionUpload extends React.Component {
         }
     }
 
-    ///add examplers name to state
+    ///add examples name to state
     handleChange = (event) => {
         // console.log("event.target.value : ", event.target.value);
         this.setState({ name: event.target.value })

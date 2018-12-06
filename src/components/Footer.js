@@ -1,9 +1,7 @@
 import React from 'react';
 import { Icon } from 'antd'
-// import { Link } from 'react-router-dom'
 
 class Footer extends React.Component {
-
 
     render() {
 

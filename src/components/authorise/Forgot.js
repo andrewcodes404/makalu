@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 //firebase
-import { auth } from '../../firebase';
+import { auth } from '../../firebase/firebase';
 
 import Navigation from "../Navigation";
 
@@ -75,9 +75,7 @@ class Forgot extends React.Component {
                 };
 
                 const email = values.email
-                auth.doPasswordReset(email, actionCodeSettings)
-
-                    // 👇 this happens when the promise is fufilled ie l0gin is successful
+                auth.sendPasswordResetEmail(email, actionCodeSettings)
                     .then(() => {
                         // this.props.history.push('/')
                         console.log('the promise returns!')
