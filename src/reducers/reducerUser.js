@@ -1,8 +1,6 @@
 import { LOGIN, LOGOUT, ADD_IMAGE, DELETE_IMAGE, ADD_COVER, ADD_MESSAGE, CALENDAR_COMPLETE } from '../actions'
 
-//set state to {object} to begin with
-// user: true
-// loggedIn: false, name: "", email: "", userContent: []
+
 export default function (state = {
     isAuthenticating: true,
     loggedIn: false,
@@ -19,6 +17,7 @@ export default function (state = {
 }, action) {
 
     switch (action.type) {
+        
         case LOGIN:
             const LoggedInState = {
                 isAuthenticating: false,
@@ -33,6 +32,7 @@ export default function (state = {
                 calendarComplete: action.payload.calendarComplete
             }
             return LoggedInState
+
         case LOGOUT:
             return {
                 isAuthenticating: false,
@@ -55,23 +55,23 @@ export default function (state = {
         case DELETE_IMAGE:
             const deleteImageFromUserImages = {
                 ...state, userImages: [
-                    ...state.userImages.slice(0, action.payload), 
+                    ...state.userImages.slice(0, action.payload),
                     ...state.userImages.slice(action.payload + 1)
                 ]
             }
             return deleteImageFromUserImages
 
         case ADD_COVER:
-            const addCover = {...state, coverUrl : action.payload, coverPicked: true}
+            const addCover = { ...state, coverUrl: action.payload, coverPicked: true }
             return addCover
-        
+
         case ADD_MESSAGE:
-            const addMessage = {...state, xmasMessage : action.payload}
+            const addMessage = { ...state, xmasMessage: action.payload }
             return addMessage
-        
-            case CALENDAR_COMPLETE:
+
+        case CALENDAR_COMPLETE:
             const calendarComplete = { ...state, calendarComplete: true }
-            return calendarComplete    
+            return calendarComplete
 
         default:
             return state;

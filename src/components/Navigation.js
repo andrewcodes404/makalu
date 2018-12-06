@@ -50,10 +50,7 @@ class Navigation extends React.Component {
 
 
     logOut = () => {
-        auth.doSignOut().then(() => {
-            this.props.history.push('/')
-        }
-        );
+        auth.signOut()
     }
 
     render() {

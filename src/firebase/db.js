@@ -1,6 +1,6 @@
 import { db } from './firebase';
 
-///SET//////SET//////SET//////SET//////SET//////SET//////SET///
+
 export const doCreateUser = (id, username, email) => {
     db.ref(`users/${id}`).set({
         id: id,
@@ -110,17 +110,6 @@ export const fireCheckFollowers = (id) => {
 // EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- 
 // EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- EXAMPLE CALENDAR --- 
 
-// export const getExampleImagesForCalender = (name) => {
-//     var dbRef = db.ref(`/users/`)
-//     var nameRef = dbRef.orderByChild('username').equalTo(name)   
-//     return nameRef.once('child_added')   
-// }
-
-// export const getExampleImagesForCalender = (name) => {
-//     var dbRef = db.ref(`/examples/`)
-//     var nameRef = dbRef.orderByChild('calName').equalTo(name)   
-//     return nameRef.once('child_added')   
-// }
 
 export const getExampleImagesForCalender = (name) => {
     console.log("name = ", name);
