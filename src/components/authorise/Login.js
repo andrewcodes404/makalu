@@ -77,7 +77,6 @@ class Login extends React.Component {
     }
 
     render() {
-        console.log("from Login this.state = ", this.state);
 
         const { getFieldDecorator } = this.props.form;
         return (
