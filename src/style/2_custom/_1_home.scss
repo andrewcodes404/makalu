@@ -33,7 +33,7 @@
     position: relative;
     // overflow: hidden;
     // @include b1();
-    height: 65vh;
+    // height: 65vh;
     min-height: 300px;
     max-height: 400px;
 
@@ -43,8 +43,8 @@
     align-items: center;
 
     @include media-sml {
-        min-height: 300px;
-        max-height: 350px;
+        min-height: 400px;
+        max-height: 450px;
     }
 
     background-image: url('../images/SVG/xmas-doodle2-grey.svg');
@@ -54,18 +54,39 @@
 
 .banner-video-cont {
     padding: 0 1rem;
-    width: 90%;
+    width: 100%;
+   
     max-width: 500px;
     margin: auto;
     @include media-sml {   
         max-width: 600px;
     }
 
-    
-
     video {
         width: 100%;
         box-shadow: 5px 5px 16px -7px rgba(57, 57, 57, .5);
+    }
+}
+
+.banner-alert{
+    width: 100%;
+    background-color: $primary;
+    text-align: center;
+    p{
+        color: white;
+        line-height: 1;
+        margin-bottom: 0;
+        border-top: 2px solid white;
+        padding: .5rem 0;
+        
+    }
+    
+}
+
+.banner-alert-btn{
+    cursor: pointer;
+    &:hover{
+        color: $secondary
     }
 }
 

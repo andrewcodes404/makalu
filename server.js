@@ -29,6 +29,7 @@ app.get('/', function (request, response) {
         }
         
         data = data.replace(/\$GOOGLE_SITE_VERI/g, 'RMymLLxmmjXy_VdMNyWgvQUppHRNx8h9F-t6JmztQjs');
+        data = data.replace(/\$GOOGLE_TAG_ASYNC/g, 'https://www.googletagmanager.com/gtag/js?id=UA-96559774-16');
         data = data.replace(/\$GOOGLE_TAG/g, 'UA-96559774-16');
         data = data.replace(/\$TWITTER_TITLE/g, 'Create your personal online advent calendar');
         data = data.replace(/\$TWITTER_DESC/g, "Make your own digital advent calendar");
@@ -50,7 +51,6 @@ app.get('/', function (request, response) {
 app.get('/example/:id', function (request, response, next) {
     const paramId = request.params.id
     const getTheData = db.ref(`examples/${paramId}`).once('value');
-
 
     getTheData.then((snapshot) => {
 
@@ -74,6 +74,7 @@ app.get('/example/:id', function (request, response, next) {
                 return console.log(err);
             }
             data = data.replace(/\$GOOGLE_SITE_VERI/g, 'RMymLLxmmjXy_VdMNyWgvQUppHRNx8h9F-t6JmztQjs');
+            data = data.replace(/\$GOOGLE_TAG_ASYNC/g, 'https://www.googletagmanager.com/gtag/js?id=UA-96559774-16');
             data = data.replace(/\$GOOGLE_TAG/g, 'UA-96559774-16');
             data = data.replace(/\$TWITTER_TITLE/g, `🎄Check out the ${paramId} advent calender 🎄`);
             data = data.replace(/\$TWITTER_DESC/g, "Make your own digital advent calendar");
@@ -88,7 +89,6 @@ app.get('/example/:id', function (request, response, next) {
             data = data.replace(/\$OG_URL/g, calendarUrl);
             data = data.replace(/\$OG_DESCRIPTION/g, "Make your own digital advent calendar");
             var result = data.replace(/\$PAGE_TITLE/g, `CountdownCals`);
-
             response.send(result);
         });
     })
@@ -113,13 +113,13 @@ app.get('/:id', function (request, response, next) {
             username = values.username
         }
 
-
         const filePath = path.resolve(__dirname, './build', 'index.html')
         fs.readFile(filePath, 'utf8', function (err, data) {
             if (err) {
                 return console.log(err);
             }
             data = data.replace(/\$GOOGLE_SITE_VERI/g, 'RMymLLxmmjXy_VdMNyWgvQUppHRNx8h9F-t6JmztQjs');
+            data = data.replace(/\$GOOGLE_TAG_ASYNC/g, 'https://www.googletagmanager.com/gtag/js?id=UA-96559774-16');
             data = data.replace(/\$GOOGLE_TAG/g, 'UA-96559774-16');
             data = data.replace(/\$TWITTER_TITLE/g, `🎄Check out ${username}'s Advent Calendar🎄`);
             data = data.replace(/\$TWITTER_DESC/g, "Make your own digital advent calendar");

@@ -34,6 +34,10 @@ class Home extends React.Component {
                 <Navigation scrollToLogin={this.scrollToLogin} />
 
                 <div className="banner">
+                <div className="banner-alert">
+                <p>It's not too late!! You can create a countdown calendar starting from today Just  <span className="banner-alert-btn" onClick={this.scrollToLogin}> SIGN UP</span></p>
+                </div>
+                
                     <div className=" banner-video-cont">
                         <video src={calVid}
                             controls
@@ -65,7 +69,7 @@ class Home extends React.Component {
                                 <h3>1</h3>
                             </div>
 
-                            <p>Login &amp; upload 24 images from your folders, facebook or instagram.</p>
+                            <p>Login &amp; upload images from your folders, facebook or instagram.</p>
                         </div>
 
                         <div className="step-item">
