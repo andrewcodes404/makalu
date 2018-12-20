@@ -40,7 +40,7 @@ class App extends React.Component {
           emailVerified = user.emailVerified;
         } else {
           // 👇 Turn ON/OFF for dev 
-          emailVerified = user.emailVerified;
+          emailVerified = true;
           // emailVerified = true;
         }
 
