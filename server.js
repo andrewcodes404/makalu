@@ -19,6 +19,17 @@ admin.initializeApp({
 
 var db = admin.database();
 
+// Redirect to HTTPS
+app.use(function (req, res, next) {
+    // Insecure request?
+    if (req.get('x-forwarded-proto') === 'http') {
+        // Redirect to https://
+        return res.redirect('https://' + req.get('host') + req.url);
+    }
+
+    next();
+});
+
 app.get('/', function (request, response) {
     console.log(' "/" page visited');
     const filePath = path.resolve(__dirname, './build', 'index.html');
