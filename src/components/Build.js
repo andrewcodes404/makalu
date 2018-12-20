@@ -23,7 +23,7 @@ class Build extends React.Component {
         this.sectionMessage = React.createRef();
         this.state = {
             visible: false,
-            uploadsComplete: false
+            uploadsComplete: false,
         }
     }
 
@@ -54,9 +54,12 @@ class Build extends React.Component {
         const now = new Date();
         const year = now.getFullYear()
         const month = now.getMonth() + 1
-        const day = "0" + now.getDate()
-        const theDate = ("" + year + month + day)
 
+        // 🐛 🐛 🐛 🐛 BUG 🐛  🐛 🐛 🐛 🐛
+        // const day = "0" + now.getDate()
+        // const day = "0" + now.getDate()
+        const day = `${now.getDate()}`.padStart(2, 0)
+        const theDate = ("" + year + month + day)
         let daysUntilXmas = 20181225 - theDate
         if (daysUntilXmas > 24) {
             daysUntilXmas = 24
